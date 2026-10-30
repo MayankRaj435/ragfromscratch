@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  --ink: #17151e;
+  --muted: #716d78;
+  --paper: #f7f5f2;
+  --lavender: #cbb8ff;
+  --lavender-light: #eee9ff;
+  --chartreuse: #d7ff45;
+  --tomato: #f0644f;
+  --line: #dedbe2;
+  --white: #fff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+button, textarea { font: inherit; }
+button { cursor: pointer; }
+
+.shell { max-width: 1180px; margin: auto; padding: 28px 34px 32px; }
+.topbar, .form-footer, .test-heading, footer { display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+.brand strong, .brand small { display: block; }
+.brand small, .eyebrow, footer, .char-count, .answer-tag { font: 500 11px "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+.brand small { color: var(--muted); margin-top: 3px; letter-spacing: .04em; }
+.brand-mark { display: grid; place-items: center; width: 38px; height: 38px; color: var(--ink); background: var(--chartreuse); border: 2px solid var(--ink); font-weight: 700; }
+.status-pill { display: flex; align-items: center; gap: 8px; padding: 9px 13px; border: 1px solid var(--line); background: var(--white); font: 500 11px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .06em; }
+.status-dot { width: 7px; height: 7px; background: #54b86a; border-radius: 50%; }
+
+.hero { display: flex; justify-content: space-between; align-items: end; padding: 92px 0 62px; }
+.eyebrow { margin: 0 0 15px; color: var(--tomato); }
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 20px; font-size: clamp(42px, 6vw, 78px); line-height: .96; letter-spacing: -.07em; font-weight: 600; }
+h1 em { color: #8062d5; font-style: normal; }
+.hero-copy { max-width: 480px; color: var(--muted); line-height: 1.65; }
+.hero-badge { display: flex; flex-direction: column; justify-content: space-between; width: 104px; height: 104px; padding: 13px; background: var(--lavender); border: 2px solid var(--ink); font: 500 11px "DM Mono", monospace; }
+.hero-badge span:last-child { align-self: end; writing-mode: vertical-rl; }
+
+.workspace { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 18px; }
+.question-card, .answer-card, .test-card { border: 1px solid var(--ink); background: var(--white); padding: 27px; box-shadow: 5px 5px 0 var(--ink); }
+.question-card { background: var(--lavender-light); }
+.card-heading { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 25px; }
+h2 { margin-bottom: 0; font-size: 22px; letter-spacing: -.04em; }
+.char-count { color: var(--muted); white-space: nowrap; }
+textarea { display: block; width: 100%; min-height: 180px; padding: 17px; resize: vertical; color: var(--ink); background: var(--white); border: 1px solid var(--ink); outline: none; line-height: 1.6; }
+textarea:focus { box-shadow: 4px 4px 0 var(--chartreuse); }
+.form-footer { align-items: end; gap: 18px; margin-top: 23px; }
+.form-message, .test-copy { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.primary-button, .secondary-button { border: 1px solid var(--ink); font-weight: 600; }
+.primary-button { display: flex; align-items: center; gap: 15px; padding: 13px 15px; color: var(--ink); background: var(--chartreuse); white-space: nowrap; }
+.primary-button:hover, .secondary-button:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--ink); }
+.button-arrow, .secondary-button span { font-size: 19px; line-height: 10px; }
+.answer-card { min-height: 380px; }
+.answer-tag { padding: 5px 7px; color: var(--ink); background: var(--chartreuse); }
+.answer-tag.error { color: var(--white); background: var(--tomato); }
+.answer-content { color: var(--ink); line-height: 1.75; white-space: pre-wrap; }
+.empty-state { display: grid; place-items: center; min-height: 165px; color: var(--muted); text-align: center; }
+.empty-icon { display: block; margin-bottom: 8px; color: #8062d5; font-size: 32px; }
+.sources { margin-top: 27px; padding-top: 20px; border-top: 1px solid var(--line); }
+.source-title { margin-bottom: 12px; color: var(--tomato); font: 500 11px "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+.source { margin-bottom: 10px; padding: 13px; background: var(--paper); border-left: 4px solid var(--lavender); font-size: 12px; line-height: 1.55; }
+.source:last-child { margin-bottom: 0; }
+.source-meta { display: block; margin-bottom: 7px; color: var(--muted); font: 500 10px "DM Mono", monospace; }
+.test-card { margin-top: 23px; background: var(--chartreuse); }
+.test-heading { align-items: start; }
+.test-copy { max-width: 500px; color: #484c1b; }
+.secondary-button { padding: 11px 14px; background: var(--white); white-space: nowrap; }
+.test-results { display: grid; gap: 8px; margin-top: 22px; }
+.test-placeholder { margin: 0; color: #62671f; font: 12px "DM Mono", monospace; }
+.test-result { display: flex; justify-content: space-between; gap: 15px; padding: 11px 13px; background: rgba(255,255,255,.72); font-size: 13px; }
+.test-result small { color: var(--muted); font-family: "DM Mono", monospace; }
+.test-result.pass strong { color: #278044; }
+.test-result.fail strong { color: var(--tomato); }
+footer { margin-top: 55px; color: var(--muted); font-size: 10px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (max-width: 760px) {
+  .shell { padding: 20px 17px 26px; }
+  .hero { padding: 65px 0 42px; }
+  .hero-badge { display: none; }
+  .workspace { grid-template-columns: 1fr; }
+  .question-card, .answer-card, .test-card { padding: 21px; }
+  .form-footer, .test-heading, footer { align-items: start; flex-direction: column; gap: 16px; }
+  .primary-button { width: 100%; justify-content: space-between; }
+  footer { margin-top: 38px; }
+}
