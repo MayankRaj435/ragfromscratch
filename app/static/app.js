@@ -9,6 +9,7 @@ const sources = document.querySelector("#sources");
 const charCount = document.querySelector("#char-count");
 const runTestsButton = document.querySelector("#run-tests");
 const testResults = document.querySelector("#test-results");
+const statusPill = document.querySelector(".status-pill");
 
 questionInput.addEventListener("input", () => {
   charCount.textContent = questionInput.value.length;
@@ -21,6 +22,8 @@ function showError(message) {
   answerContent.className = "answer-content";
   answerContent.textContent = message;
   sources.hidden = true;
+  statusPill.classList.add("offline");
+  statusPill.lastChild.textContent = " API attention";
 }
 
 function showAnswer(data) {
@@ -36,6 +39,8 @@ function showAnswer(data) {
         <span class="source-meta">SOURCE ${String(index + 1).padStart(2, "0")} · SIMILARITY ${source.score}</span>
         ${escapeHtml(source.text)}
       </article>`).join("");
+  statusPill.classList.remove("offline");
+  statusPill.lastChild.textContent = " API ready";
 }
 
 function escapeHtml(value) {
@@ -47,7 +52,8 @@ function escapeHtml(value) {
 askForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   askButton.disabled = true;
-  askButton.querySelector("span").textContent = "Thinking...";
+  askButton.classList.add("is-loading");
+  askButton.querySelector(".button-label").textContent = "Thinking...";
   formMessage.textContent = "Retrieving context and generating an answer...";
   try {
     const response = await fetch("/ask", {
@@ -64,7 +70,8 @@ askForm.addEventListener("submit", async (event) => {
     formMessage.textContent = "The request was not completed. Check the message above.";
   } finally {
     askButton.disabled = false;
-    askButton.querySelector("span").textContent = "Ask question";
+    askButton.classList.remove("is-loading");
+    askButton.querySelector(".button-label").textContent = "Ask question";
   }
 });
 
@@ -83,7 +90,7 @@ async function runCheck(name, request, assertion) {
 
 runTestsButton.addEventListener("click", async () => {
   runTestsButton.disabled = true;
-  runTestsButton.firstChild.textContent = "Running... ";
+  runTestsButton.querySelector(".button-label").textContent = "Running...";
   testResults.innerHTML = "";
   const checks = await Promise.all([
     runCheck("Frontend route", () => fetch("/"), (response) => response.ok),
@@ -98,5 +105,5 @@ runTestsButton.addEventListener("click", async () => {
       <span>${check.name}</span><strong>${check.passed ? "PASS" : "FAIL"}</strong><small>${check.detail}</small>
     </div>`).join("");
   runTestsButton.disabled = false;
-  runTestsButton.firstChild.textContent = "Run checks ";
+  runTestsButton.querySelector(".button-label").textContent = "Run checks";
 });

@@ -11,7 +11,7 @@
     <main class="shell">
       <header class="topbar">
         <a class="brand" href="/">
-          <span class="brand-mark">RG</span>
+          <span class="brand-mark" aria-hidden="true"><span>R</span><span>G</span></span>
           <span>
             <strong>RAG Guardrails</strong>
             <small>Knowledge console</small>
@@ -22,16 +22,22 @@
 
       <section class="hero">
         <div>
-          <p class="eyebrow">Ask with confidence</p>
+          <p class="eyebrow"><span class="eyebrow-line"></span>Ask with confidence</p>
           <h1>Answers grounded in<br /><em>your policy.</em></h1>
           <p class="hero-copy">
             Ask a question and inspect the exact context used to generate the response.
             Every answer stays connected to the source.
           </p>
+          <div class="hero-stats" aria-label="Console features">
+            <span><strong>01</strong> Guarded input</span>
+            <span><strong>02</strong> Source context</span>
+            <span><strong>03</strong> Clear boundaries</span>
+          </div>
         </div>
         <div class="hero-badge" aria-hidden="true">
-          <span>01</span>
-          <span>GUARDED</span>
+          <span class="badge-ring"></span>
+          <span class="badge-number">01</span>
+          <span>GUARDED<br />BY DESIGN</span>
         </div>
       </section>
 
@@ -39,7 +45,7 @@
         <form id="ask-form" class="question-card">
           <div class="card-heading">
             <div>
-              <p class="eyebrow">01 / Ask the knowledge base</p>
+              <p class="eyebrow"><span class="section-number">01</span> Ask the knowledge base</p>
               <h2>What do you want to know?</h2>
             </div>
             <span class="char-count"><span id="char-count">0</span> / 1000</span>
@@ -51,7 +57,7 @@
           <div class="form-footer">
             <p id="form-message" class="form-message">Responses include grounded source excerpts.</p>
             <button type="submit" class="primary-button" id="ask-button">
-              <span>Ask question</span><span class="button-arrow">↗</span>
+              <span class="button-label">Ask question</span><span class="button-arrow">↗</span>
             </button>
           </div>
         </form>
@@ -59,7 +65,7 @@
         <section class="answer-card" id="answer-card" aria-live="polite">
           <div class="card-heading">
             <div>
-              <p class="eyebrow">02 / Response</p>
+              <p class="eyebrow"><span class="section-number">02</span> Response</p>
               <h2 id="answer-heading">Your answer will appear here</h2>
             </div>
             <span class="answer-tag" id="answer-tag">WAITING</span>
@@ -75,10 +81,10 @@
       <section class="test-card" aria-label="Frontend API test console">
         <div class="test-heading">
           <div>
-            <p class="eyebrow">03 / Verification</p>
+            <p class="eyebrow"><span class="section-number">03</span> Verification</p>
             <h2>Run API checks from here</h2>
           </div>
-          <button type="button" class="secondary-button" id="run-tests">Run checks <span>↗</span></button>
+          <button type="button" class="secondary-button" id="run-tests"><span class="button-label">Run checks</span> <span>↗</span></button>
         </div>
         <p class="test-copy">A quick smoke test for the routes and guardrails behind this console.</p>
         <div id="test-results" class="test-results">
