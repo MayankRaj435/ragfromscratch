@@ -3,4 +3,3 @@ uvicorn
 google-genai
 python-dotenv
 pytest
-sentence-transformers
